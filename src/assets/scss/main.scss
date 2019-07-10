@@ -1,0 +1,129 @@
+@charset "UTF-8";
+@import "./utils/_utils.scss";
+@import "./_reset.scss";
+@import url('https://fonts.googleapis.com/css?family=Lato&display=fallback');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+html, body {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 1.4em;
+}
+
+.wrap {
+    max-width: 660px;
+    margin: auto;
+}
+
+.wrap-full {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.views-zone {
+    flex-grow: 1;
+    height: calc((100% - 80px)/2);
+    background-color: $color-beige;
+    overflow: hidden;
+    position: relative;
+}
+
+.ctrl-zone {
+    flex-grow: 1;
+    height: calc((100% - 80px)/2);
+    background-color: $color-white;
+}
+
+.footer-zone {
+    width: 100%;
+    background-color: $color-orange;
+    transition: all 1s;
+
+    > .wrap-full {
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .logo {
+        font-size: 34px;
+        font-weight: bold;
+        color: $color-white;
+    }
+
+    @at-root .theme-green & {
+        background-color: $color-green;
+    }
+}
+
+#menu {
+    width: 240px;
+    display: flex;
+
+}
+
+.menu-btn {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    .material-icons {
+        font-size: 40px;
+        color: $color-white;
+    }
+
+    &.router-link-exact-active {
+        background-color: $color-white;
+        .material-icons {
+            color: $color-orange;
+        }
+    }
+
+    @at-root .theme-green & {
+        &.router-link-exact-active {
+            .material-icons {
+                color: $color-green;
+            }
+        }
+    }
+}
+
+@import "./_pomodoro.scss";
+
+.fade-leave,
+.fade-enter-to {
+    opacity: 1;
+}
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: all .3s;
+}
