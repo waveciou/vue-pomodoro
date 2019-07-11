@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import "./utils/_utils.scss";
+@import "./_utils.scss";
 @import "./_reset.scss";
 @import url('https://fonts.googleapis.com/css?family=Lato&display=fallback');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
@@ -25,8 +25,12 @@ html, body {
 }
 
 h2 {
-    font-size: 30px;
+    font-size: 24px;
+    font-weight: bold;
     line-height: 1.4em;
+    margin: 15px 0px;
+    padding: 10px 0px;
+    border-bottom: 1px $color-gray solid;
 }
 
 .wrap {
@@ -47,10 +51,20 @@ h2 {
     position: relative;
 }
 
-.ctrl-zone {
+.control-zone {
     flex-grow: 1;
     height: calc((100% - 80px)/2);
     background-color: $color-white;
+
+    > .wrap {
+        height: 100%;
+    }
+}
+
+.content {
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .footer-zone {
@@ -66,6 +80,7 @@ h2 {
     }
 
     .logo {
+        padding-left: 10px;
         font-size: 34px;
         font-weight: bold;
         color: $color-white;
