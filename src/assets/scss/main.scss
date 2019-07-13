@@ -1,7 +1,7 @@
 @charset "UTF-8";
 @import "./_utils.scss";
 @import "./_reset.scss";
-@import url('https://fonts.googleapis.com/css?family=Lato&display=fallback');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=fallback');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
 html, body {
@@ -54,7 +54,7 @@ html, body {
 
 .views-zone {
     flex-grow: 1;
-    height: calc((100% - 80px)/2);
+    height: 370px;
     background-color: $color-beige;
     overflow: hidden;
     position: relative;
@@ -62,7 +62,7 @@ html, body {
 
 .control-zone {
     flex-grow: 1;
-    height: calc((100% - 80px)/2);
+    height: calc(100% - 450px);
     padding: 15px 0px;
     background-color: $color-white;
 

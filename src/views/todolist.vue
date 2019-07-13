@@ -78,13 +78,13 @@
     .countdownList__title {
         margin: 10px 0px;
         padding-left: 30px;
-        line-height: 21px;
+        line-height: 25px;
         position: relative;
 
         &::before {
             content: '';
-            width: 17px;
-            height: 17px;
+            width: 15px;
+            height: 15px;
             display: block;
             border: {
                 width: 2px;
@@ -93,6 +93,7 @@
                 radius: 100%
             }
             position: absolute;
+            top: 3px;
             left: 0px;
         }
 

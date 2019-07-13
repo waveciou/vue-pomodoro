@@ -4,11 +4,18 @@
 
 ## 第一關 - 番茄鐘 Pomodoro
 
+### DEMO
+
+[link](https://waveciou.github.io/vue-pomodoro/dist/)
+
 ### 設計稿
 
-https://challenge.thef2e.com/user/2871?schedule=2490#works-2490
+![pomodoro](https://waveciou.github.io/vue-pomodoro/design.jpg "pomodoro")
+
+[link](https://challenge.thef2e.com/user/2871?schedule=2490#works-2490)
 
 ### 使用技術
+
 - vue
 - vue cli3
 - vue router

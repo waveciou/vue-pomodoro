@@ -121,19 +121,37 @@
 }
 
 .pomodoro__clearButton {
-    width: 36px;
-    height: 36px;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: $color-gray;
-    border: 3px $color-gray solid;
-    border-radius: 100%;
+    border: {
+        width: 3px;
+        color: $color-gray;
+        style: solid;
+        radius: 100%;
+    }
     position: absolute;
     right: 35px;
 
     > i {
         color: $color-gray;
         font-weight: bold;
+        font-size: 20px;
+    }
+
+    &:hover {
+        background-color: $color-orange;
+        border-color: $color-orange;
+        > i {
+            color: $color-white;
+        }
+    }
+
+    @at-root .theme-green &:hover {
+        background-color: $color-green;
+        border-color: $color-green;
     }
 }
