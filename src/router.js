@@ -9,19 +9,28 @@ export default new Router({
       path: '/',
       name: 'todolist',
       props: true,
-      component: () => import('./views/todolist.vue')
+      component: () => import('./views/todolist.vue'),
+      meta: {
+        title: 'Pomodoro - TodoList'
+      }
     },
     {
       path: '/analytics',
       name: 'analytics',
       props: true,
-      component: () => import('./views/analytics.vue')
+      component: () => import('./views/analytics.vue'),
+      meta: {
+        title: 'Pomodoro - Analytics'
+      }
     },
     {
       path: '/ringtone',
       name: 'ringtone',
       props: true,
-      component: () => import('./views/ringtone.vue')
+      component: () => import('./views/ringtone.vue'),
+      meta: {
+        title: 'Pomodoro - Ringtone'
+      }
     },
     {
       path: '*',

@@ -24,13 +24,22 @@ html, body {
     flex-direction: column;
 }
 
-h2 {
+.title {
     font-size: 24px;
     font-weight: bold;
     line-height: 1.4em;
     margin: 15px 0px;
     padding: 10px 0px;
-    border-bottom: 1px $color-gray solid;
+    color: $color-black;
+    border-bottom: {
+        width: 1px;
+        color: $color-gray;
+        style: solid;
+    }
+
+    &.theme-come {
+        color: $color-gray;
+    }
 }
 
 .wrap {
@@ -54,6 +63,7 @@ h2 {
 .control-zone {
     flex-grow: 1;
     height: calc((100% - 80px)/2);
+    padding: 15px 0px;
     background-color: $color-white;
 
     > .wrap {

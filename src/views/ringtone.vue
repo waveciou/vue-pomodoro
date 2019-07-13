@@ -1,6 +1,7 @@
 <template>
     <div class="content">
-        <h2>RINGTONE</h2>
+        <h2 class="title">RINGTONE</h2>
+        <p>尚未完成</p>
     </div>
 </template>
 
