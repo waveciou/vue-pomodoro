@@ -1,5 +1,5 @@
 <template>
-    <div class="content">
+    <div class="container">
         <h2 class="title">ANALYTICS</h2>
         <p>尚未完成</p>
     </div>

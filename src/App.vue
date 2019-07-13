@@ -37,7 +37,7 @@
       <div class="control-zone">
         <div class="wrap">
           <transition name="fade" mode="out-in">
-            <router-view :countdownList="countdownList" @getCurrentIndex="repleaceCountdownTimer" />
+            <router-view :countdownList="countdownList" @getCurrentIndex="repleaceCountdownTimer" @addTodoList="pushCountdownTimer" />
           </transition>
         </div>
       </div>
@@ -94,16 +94,6 @@
             level: 1,
             levelMax: 5,
           },
-          {
-            name: '第四件待辦事項再做一個蕃茄鐘',
-            level: 2,
-            levelMax: 5,
-          },
-          {
-            name: '第五件待辦事項再做一個蕃茄鐘',
-            level: 4,
-            levelMax: 5,
-          }
         ],
         circle: {
           dom: null,
@@ -228,6 +218,16 @@
         let data = this.getLevelData(this.countdownTimer.level);
         this.countdownTimer.time = data.totleTime;
         this.statusBreak = data.status;
+      },
+      pushCountdownTimer(name) {
+        let obj = {
+          name: name,
+          level: 0,
+          levelMax: 5,
+        }
+        this.countdownList.push(obj);
+        let index = this.countdownList.length - 1;
+        this.repleaceCountdownTimer(index);
       }
     },
     computed: {
