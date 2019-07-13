@@ -1,29 +1,15 @@
-# vue-pomodoro
+# 2019 TheF2E 2nd
 
-## Project setup
-```
-npm install
-```
+六角學院 [2019 TheF2E 前端修練精神時光屋](https://challenge.thef2e.com/) 活動。
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## 第一關 - 番茄鐘 Pomodoro
 
-### Compiles and minifies for production
-```
-npm run build
-```
+### 採用設計稿：
+https://challenge.thef2e.com/user/2871?schedule=2490#works-2490
 
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 使用技術：
+- vue
+- vue cli3
+- vue router
+- JavaScript ES6
+- SCSS
