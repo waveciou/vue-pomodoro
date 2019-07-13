@@ -1,20 +1,18 @@
-# TheF2E 2nd
+# The F2E 2019 第一關 - 番茄鐘 Pomodoro
 
-六角學院 [2019 TheF2E 前端修練精神時光屋](https://challenge.thef2e.com/) 活動。
+2019 六角學院 [TheF2E 前端修練精神時光屋](https://challenge.thef2e.com/) 活動。
 
-## 第一關 - 番茄鐘 Pomodoro
+## DEMO
 
-### DEMO
+- [網站連結](https://waveciou.github.io/vue-pomodoro/dist/)
 
-[link](https://waveciou.github.io/vue-pomodoro/dist/)
-
-### 設計稿
+## DESIGN
 
 ![pomodoro](https://waveciou.github.io/vue-pomodoro/design.jpg "pomodoro")
 
-[link](https://challenge.thef2e.com/user/2871?schedule=2490#works-2490)
+- [設計稿連結](https://challenge.thef2e.com/user/2871?schedule=2490#works-2490)
 
-### 使用技術
+## SKILL
 
 - vue
 - vue cli3
