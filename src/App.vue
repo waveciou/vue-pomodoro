@@ -37,7 +37,7 @@
       <div class="control-zone">
         <div class="wrap">
           <transition name="fade" mode="out-in">
-            <router-view :countdownList="countdownList" @getCurrentIndex="repleaceCountdownTimer" @addTodoList="pushCountdownTimer" />
+            <router-view :countdownList="countdownList" :countdownTimer="countdownTimer" :currentList="currentList" @updateCurrentItem="updateCountdownTimer" @addTodoList="pushCountdownTimer" />
           </transition>
         </div>
       </div>
@@ -70,6 +70,7 @@
   export default {
     data() {
       return {
+        currentList: 0,
         countdownTimer: {
           name: '',
           level: 0,
@@ -80,18 +81,21 @@
         },
         countdownList: [
           {
-            name: '第一件待辦事項是做一個蕃茄鐘',
+            name: '11111',
+            id: 0,
             level: 0,
             levelMax: 5,
           },
           {
-            name: '第二件待辦事項再做一個蕃茄鐘',
-            level: 3,
+            name: '22222',
+            id: 1,
+            level: 1,
             levelMax: 5,
           },
           {
-            name: '第三件待辦事項再做一個蕃茄鐘',
-            level: 1,
+            name: '33333',
+            id: 2,
+            level: 4,
             levelMax: 5,
           },
         ],
@@ -116,7 +120,8 @@
       this.circle.dom = document.querySelector('.pomodoro__circle');
       this.circle.box = document.querySelector('.pomodoro__circleBox');
 
-      this.updateCountdownTimer();
+      let val = this.countdownList[0].id;
+      this.updateCountdownTimer(val);
     },
     methods: {
       circleTransitionEnd() {
@@ -125,7 +130,13 @@
           if(this.countdownTimer.level >= this.countdownTimer.levelMax) {
             this.countdownTimer.level = this.countdownTimer.levelMax;
           }
-          this.countdownList[0].level = this.countdownTimer.level;
+
+          this.countdownList.forEach((item)=>{
+            if(item.id === this.currentList) {
+              item.level = this.countdownTimer.level;
+            }
+          });
+
           this.clearCountdownTimer();
           this.isFinish = false;
         }
@@ -202,19 +213,19 @@
           this.circle.dom.style.opacity = 1;
         }, 1000);
       },
-      repleaceCountdownTimer(val) {
+      updateCountdownTimer(key) {
         this.clearCountdownTimer();
-        let targetCountdown = this.countdownList[val];
-        this.countdownList.splice(val, 1);
-        let oldList = [...this.countdownList];
-        let newList = [targetCountdown].concat(oldList);
-        this.countdownList = newList;
-        this.updateCountdownTimer();
-      },
-      updateCountdownTimer() {
-        this.countdownTimer.name = this.countdownList[0].name;
-        this.countdownTimer.level = this.countdownList[0].level;
-        this.countdownTimer.levelMax = this.countdownList[0].levelMax;
+
+        this.currentList = key;
+
+        let item = this.countdownList.filter((item)=>{
+          return item.id === this.currentList
+        });
+
+        this.countdownTimer.name = item[0].name;
+        this.countdownTimer.level = item[0].level;
+        this.countdownTimer.levelMax = item[0].levelMax;
+
         let data = this.getLevelData(this.countdownTimer.level);
         this.countdownTimer.time = data.totleTime;
         this.statusBreak = data.status;
@@ -222,12 +233,12 @@
       pushCountdownTimer(name) {
         let obj = {
           name: name,
+          id: this.countdownList.length + 1,
           level: 0,
           levelMax: 5,
         }
         this.countdownList.push(obj);
-        let index = this.countdownList.length - 1;
-        this.repleaceCountdownTimer(index);
+        this.updateCountdownTimer(obj.id);
       }
     },
     computed: {

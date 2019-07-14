@@ -118,6 +118,13 @@
     &.is-pause {
         background-color: $color-gray;
     }
+
+    @at-root .theme-green & {
+        background-color: $color-green;
+        &.is-pause {
+            background-color: $color-gray;
+        }
+    }
 }
 
 .pomodoro__clearButton {

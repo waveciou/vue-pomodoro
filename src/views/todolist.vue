@@ -4,16 +4,16 @@
             <h2 class="title">THE MISSION TODAY</h2>
             <div class="countdownList__item">
                 <div class="countdownList__title"><i
-                        class="material-icons">panorama_fish_eye</i>{{ countdownList[0].name }}</div>
+                        class="material-icons">panorama_fish_eye</i>{{ countdownTimer.name }}</div>
                 <div class="countdownList__level">
-                    <span v-for="(item, index) in countdownList[0].levelMax" :key="index"
-                        :class="{'is-current': index < countdownList[0].level}"></span>
+                    <span v-for="(item, index) in countdownTimer.levelMax" :key="index"
+                        :class="{'is-current': index < countdownTimer.level}"></span>
                 </div>
             </div>
             <h2 class="title theme-come">UP COMING MISSION</h2>
             <ul class="countdownList theme-come">
-                <li v-for="(item, index) in countdownList" :key="index">
-                    <a href="javascript:;" class="countdownList__item" @click='sendCurrentIndex(index)'>
+                <li v-for="(item, index) in filterValidList" :key="index">
+                    <a href="javascript:;" class="countdownList__item" @click='selectCurrentItem(item.id)'>
                         <div class="countdownList__title"><i class="material-icons">panorama_fish_eye</i>{{ item.name }}
                         </div>
                         <div class="countdownList__level">
@@ -27,7 +27,7 @@
         <div class="input-ctrl">
             <div class="fieldset">
                 <i class="material-icons">control_point</i>
-                <input type="text" class="input" placeholder="ADD ITEM" v-model.trim="todoTiem.name">
+                <input type="text" class="input" placeholder="ADD ITEM" v-model.trim="todoItem.name">
             </div>
             <button type="button" class="material-icons" @click="addTodoItem()">add</button>
         </div>
@@ -38,13 +38,13 @@
     export default {
         data() {
             return {
-                todoTiem: {
+                todoItem: {
                     name: ''
                 }
             }
         },
         name: 'todolist',
-        props: ['countdownList'],
+        props: ['countdownList', 'countdownTimer', 'currentList'],
         created() {
             document.title = this.$route.meta.title;
         },
@@ -52,24 +52,25 @@
 
         },
         methods: {
-            sendCurrentIndex(index) {
-                this.$emit('getCurrentIndex', index);
+            selectCurrentItem(key) {
+                this.$emit('updateCurrentItem', key);
             },
             addTodoItem() {
-                if(this.todoTiem.name === '') {
+                if(this.todoItem.name === '') {
                     return false
                 } else {
-                    this.$emit('addTodoList', this.todoTiem.name);
-                    this.todoTiem.name = '';
+                    this.$emit('addTodoList', this.todoItem.name);
+                    this.todoItem.name = '';
                 }
             }
         },
         computed: {
-            getMissionList() {
-                let newList = []
-                newList.push(this.countdownList[0]);
-                return newList;
-            },
+            filterValidList() {
+                let newList = this.countdownList.filter((item)=>{
+                    return item.level < item.levelMax && item.id !== this.currentList;
+                });
+                return newList
+            }
         }
     }
 </script>
@@ -80,10 +81,7 @@
     .countdownList {
         > li {
             margin: 15px 0px;
-        }
-
-        &.theme-come {
-            > li:first-child {
+            &.is-hide {
                 display: none;
                 visibility: hidden;
             }
