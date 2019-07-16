@@ -3,8 +3,8 @@
         <div class="content">
             <h2 class="title">THE MISSION TODAY</h2>
             <div class="countdownList__item">
-                <div class="countdownList__title"><i
-                        class="material-icons">panorama_fish_eye</i>{{ countdownTimer.name }}</div>
+                <div class="countdownList__title">
+                    <i class="material-icons">panorama_fish_eye</i>{{ countdownTimer.name }}</div>
                 <div class="countdownList__level">
                     <span v-for="(item, index) in countdownTimer.levelMax" :key="index"
                         :class="{'is-current': index < countdownTimer.level}"></span>
@@ -21,6 +21,19 @@
                                 :class="{'is-current': i < item.level}"></span>
                         </div>
                     </a>
+                </li>
+            </ul>
+            <h2 class="title">DONE</h2>
+            <ul class="countdownList theme-finish">
+                <li v-for="(item, index) in filterFinishList" :key="index">
+                    <div class="countdownList__item">
+                        <div class="countdownList__title"><i class="material-icons">lens</i>{{ item.name }}
+                        </div>
+                        <div class="countdownList__level">
+                            <span v-for="(star, i) in item.levelMax" :key="i"
+                                :class="{'is-current': i < item.level}"></span>
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -70,6 +83,12 @@
                     return item.level < item.levelMax && item.id !== this.currentList;
                 });
                 return newList
+            },
+            filterFinishList() {
+                let newList = this.countdownList.filter((item)=>{
+                    return item.level >= item.levelMax && item.id !== this.currentList;
+                });
+                return newList
             }
         }
     }
@@ -90,6 +109,12 @@
 
     .countdownList__item {
         display: block;
+
+        @at-root .theme-finish & {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
 
     .countdownList__title {
@@ -114,6 +139,20 @@
             color: $color-black;
             .material-icons {
                 color: $color-black;
+            }
+        }
+
+        @at-root .theme-finish & {
+            color: $color-orange;
+            .material-icons {
+                color: $color-orange;
+            }
+        }
+
+        @at-root .theme-green .theme-finish & {
+            color: $color-green;
+            .material-icons {
+                color: $color-green;
             }
         }
     }
@@ -153,6 +192,24 @@
                     background-color: $color-black;
                 }
             }
+
+            @at-root .theme-finish & {
+                &.is-current {
+                    background-color: $color-orange;
+                    border-color: $color-orange;
+                }
+            }
+
+            @at-root .theme-green .theme-finish & {
+                &.is-current {
+                    background-color: $color-green;
+                    border-color: $color-green;
+                }
+            }
+        }
+
+        @at-root .theme-finish & {
+            width: auto;
         }
     }
 

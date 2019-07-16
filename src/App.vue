@@ -37,7 +37,7 @@
       <div class="control-zone">
         <div class="wrap">
           <transition name="fade" mode="out-in">
-            <router-view :countdownList="countdownList" :countdownTimer="countdownTimer" :currentList="currentList" @updateCurrentItem="updateCountdownTimer" @addTodoList="pushCountdownTimer" />
+            <router-view :countdownList="countdownList" :countdownTimer="countdownTimer" :currentList="currentList" @updateCurrentItem="updateCountdownTimer" @addTodoList="pushCountdownTimer" @setRingtone="contrlRingTone" />
           </transition>
         </div>
       </div>
@@ -81,21 +81,33 @@
         },
         countdownList: [
           {
-            name: '11111',
+            name: '第一件待辦事項是做一個蕃茄鐘',
             id: 0,
             level: 0,
             levelMax: 5,
           },
           {
-            name: '22222',
+            name: '第二件待辦事項再做一個蕃茄鐘',
             id: 1,
             level: 1,
             levelMax: 5,
           },
           {
-            name: '33333',
+            name: '第三件待辦事項再做一個蕃茄鐘',
             id: 2,
+            level: 2,
+            levelMax: 5,
+          },
+          {
+            name: '第四件待辦事項再做一個蕃茄鐘',
+            id: 3,
             level: 4,
+            levelMax: 5,
+          },
+          {
+            name: '第五件待辦事項再做一個蕃茄鐘',
+            id: 4,
+            level: 5,
             levelMax: 5,
           },
         ],
@@ -239,6 +251,9 @@
         }
         this.countdownList.push(obj);
         this.updateCountdownTimer(obj.id);
+      },
+      contrlRingTone(data) {
+        // console.log(data);
       }
     },
     computed: {
