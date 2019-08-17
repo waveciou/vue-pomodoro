@@ -57,12 +57,9 @@
             }
         },
         name: 'todolist',
-        props: ['countdownList', 'countdownTimer', 'currentList'],
+        props: ['countdownTimer', 'currentList'],
         created() {
             document.title = this.$route.meta.title;
-        },
-        mounted() {
-
         },
         methods: {
             selectCurrentItem(key) {
@@ -79,13 +76,13 @@
         },
         computed: {
             filterValidList() {
-                let newList = this.countdownList.filter((item)=>{
+                let newList = this.$store.state.countdownList.filter((item)=>{
                     return item.level < item.levelMax && item.id !== this.currentList;
                 });
                 return newList
             },
             filterFinishList() {
-                let newList = this.countdownList.filter((item)=>{
+                let newList = this.$store.state.countdownList.filter((item)=>{
                     return item.level >= item.levelMax && item.id !== this.currentList;
                 });
                 return newList

@@ -19,72 +19,6 @@
         data() {
             return {
                 ringtoneSelected: 'Defult',
-                ringtoneList: [
-                    {
-                        name: 'Defult',
-                        url: ''
-                    },
-                    {
-                        name: 'Sea',
-                        url: ''
-                    },
-                    {
-                        name: 'Flute',
-                        url: ''
-                    },
-                    {
-                        name: 'Digital',
-                        url: ''
-                    },
-                    {
-                        name: 'Bird',
-                        url: ''
-                    },
-                    {
-                        name: 'Ring',
-                        url: ''
-                    },
-                    {
-                        name: 'Horn',
-                        url: ''
-                    },
-                    {
-                        name: 'Shout',
-                        url: ''
-                    },
-                    {
-                        name: 'Dog',
-                        url: ''
-                    },
-                    {
-                        name: 'Bell',
-                        url: ''
-                    },
-                    {
-                        name: 'Drum',
-                        url: ''
-                    },
-                    {
-                        name: 'Music',
-                        url: ''
-                    },
-                    {
-                        name: 'Duck',
-                        url: ''
-                    },
-                    {
-                        name: 'Alarm',
-                        url: ''
-                    },
-                    {
-                        name: 'Knock',
-                        url: ''
-                    },
-                    {
-                        name: 'Swing',
-                        url: ''
-                    },
-                ]
             }
         },
         name: 'ringtone',
@@ -93,10 +27,15 @@
         },
         methods: {
             checkedRingTone() {
-                let data = this.ringtoneList.filter((item)=>{
+                let data = this.$store.state.ringtoneList.filter((item)=>{
                     return item.name === this.ringtoneSelected
                 });
                 this.$emit('setRingtone', data[0]);
+            }
+        },
+        computed: {
+            ringtoneList() {
+                return this.$store.state.ringtoneList
             }
         }
     }
