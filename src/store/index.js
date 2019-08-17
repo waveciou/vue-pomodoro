@@ -12,30 +12,30 @@ export default new Vuex.Store({
                 level: 0,
                 levelMax: 5,
             },
-            {
-                name: '第二件待辦事項再做一個蕃茄鐘',
-                id: 1,
-                level: 1,
-                levelMax: 5,
-            },
-            {
-                name: '第三件待辦事項再做一個蕃茄鐘',
-                id: 2,
-                level: 2,
-                levelMax: 5,
-            },
-            {
-                name: '第四件待辦事項再做一個蕃茄鐘',
-                id: 3,
-                level: 4,
-                levelMax: 5,
-            },
-            {
-                name: '第五件待辦事項再做一個蕃茄鐘',
-                id: 4,
-                level: 5,
-                levelMax: 5,
-            },
+            // {
+            //     name: '第二件待辦事項再做一個蕃茄鐘',
+            //     id: 1,
+            //     level: 1,
+            //     levelMax: 5,
+            // },
+            // {
+            //     name: '第三件待辦事項再做一個蕃茄鐘',
+            //     id: 2,
+            //     level: 2,
+            //     levelMax: 5,
+            // },
+            // {
+            //     name: '第四件待辦事項再做一個蕃茄鐘',
+            //     id: 3,
+            //     level: 4,
+            //     levelMax: 5,
+            // },
+            // {
+            //     name: '第五件待辦事項再做一個蕃茄鐘',
+            //     id: 4,
+            //     level: 5,
+            //     levelMax: 5,
+            // },
         ],
         ringtoneList: [
             {
@@ -103,5 +103,15 @@ export default new Vuex.Store({
                 url: ''
             },
         ]
+    },
+    actions: {
+        pushCountdownTimer(context, item) {
+            context.commit('PUSHITEM', item);
+        }
+    },
+    mutations: {
+        PUSHITEM(state, item) {
+            state.countdownList.push(item);
+        }
     }
 });

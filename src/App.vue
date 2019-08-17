@@ -219,7 +219,8 @@
                     level: 0,
                     levelMax: 5,
                 }
-                this.$store.state.countdownList.push(obj);
+                this.$store.dispatch('pushCountdownTimer', obj);
+
                 this.updateCountdownTimer(obj.id);
             },
             contrlRingTone(data) {

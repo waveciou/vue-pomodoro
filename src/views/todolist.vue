@@ -10,7 +10,7 @@
                         :class="{'is-current': index < countdownTimer.level}"></span>
                 </div>
             </div>
-            <h2 class="title theme-come">UP COMING MISSION</h2>
+            <h2 class="title theme-come" v-if="filterValidList.length > 0">UP COMING MISSION</h2>
             <ul class="countdownList theme-come">
                 <li v-for="(item, index) in filterValidList" :key="index">
                     <a href="javascript:;" class="countdownList__item" @click='selectCurrentItem(item.id)'>
@@ -23,7 +23,7 @@
                     </a>
                 </li>
             </ul>
-            <h2 class="title">DONE</h2>
+            <h2 class="title" v-if="filterFinishList.length > 0">DONE</h2>
             <ul class="countdownList theme-finish">
                 <li v-for="(item, index) in filterFinishList" :key="index">
                     <div class="countdownList__item">
