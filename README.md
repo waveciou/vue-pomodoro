@@ -17,5 +17,6 @@
 - vue
 - vue cli3
 - vue router
+- vuex
 - JavaScript ES6
 - SCSS
