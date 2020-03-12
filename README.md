@@ -4,7 +4,12 @@
 
 ## DEMO
 
-- [網站連結](https://waveciou.github.io/vue-pomodoro/dist/)
+[網站連結](https://waveciou.github.io/vue-pomodoro/dist/)
+
+一個簡易的番茄鐘實作，內容包含：
+
+- 有效利用 setInterval 與 setTimeout 實現其功能
+- 結合 CSS3 transform 動畫實現時鐘顏色轉場效果
 
 ## DESIGN
 

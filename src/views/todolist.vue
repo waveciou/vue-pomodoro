@@ -258,10 +258,18 @@
                 color: $color-orange;
             }
 
+            &:focus {
+                box-shadow: 0 0 0 0.2rem rgba($color-orange,0.6);
+            }
+
             @at-root .theme-green & {
                 color: $color-green;
                 &::placeholder {
                     color: $color-green;
+                }
+
+                &:focus {
+                    box-shadow: 0 0 0 0.2rem rgba($color-green,0.6);
                 }
             }
         }
